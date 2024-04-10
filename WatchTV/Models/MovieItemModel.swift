@@ -10,7 +10,7 @@ import Foundation
 class MovieItemModel: Codable {
     let posterPath: String?
     let releaseDate: String
-let voteAverage: Float
+    let voteAverage: Float
     let popularity: Float
     let id: Int
     let title: String

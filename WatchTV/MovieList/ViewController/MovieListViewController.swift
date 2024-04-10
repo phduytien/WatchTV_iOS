@@ -25,18 +25,21 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar();
-        setupBackgroundView()
-        viewModel.loadViewInitialData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.loadViewInitialData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
+        setupNavigationBar();
+        setupBackgroundView()
         super.viewWillAppear(animated)
     }
     
     private func setupNavigationBar() {
-        title = "Trending Movie Today"
+        title = "Trending Today"
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search movie"
@@ -114,8 +117,12 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource, M
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let movieModel = viewModel.movieItemModel(at: indexPath.row) {
-            let movieDetailsVC = MovieDetailViewController(movieModel, managedObjectContext: viewModel.currentMOC())
+        if let movie = viewModel.movieItemModel(at: indexPath.row) {
+            let movieDetailsVC = MovieDetailViewController(
+                movie.id,
+                title: movie.title,
+                managedObjectContext: viewModel.currentMOC()
+            )
             navigationController?.pushViewController(movieDetailsVC, animated: true)
         }
     }

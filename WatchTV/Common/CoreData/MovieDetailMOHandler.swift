@@ -18,7 +18,7 @@ class MovieDetailMOHandler {
             let savedItemsMO = NSManagedObject(entity: entity, insertInto: moc)
             let movieDetailData = try? JSONEncoder().encode(movieDetail)
             savedItemsMO.setValue(movieDetailData, forKeyPath: "movieDetailData")
-            savedItemsMO.setValue(Date(), forKey: "timeStamp")
+            savedItemsMO.setValue(Date(), forKey: "timestamp")
             savedItemsMO.setValue(movieDetail.id, forKey: "movieId")
             
             do {

@@ -9,11 +9,14 @@ import Foundation
 import CoreData
 import UIKit
 
-class MovieDetailViewController: UIViewController {
-    private var viewModel: MovieDetailViewModel
+class MovieDetailViewController: UIViewController, MovieDetailViewControllerProtocol {
     
-    init(_ movieInfoModel: MovieItemModel, managedObjectContext: NSManagedObjectContext) {
-        viewModel = MovieDetailViewModel(movieInfoModel, managedObjectContext: managedObjectContext)
+    private var viewModel: MovieDetailViewModel
+    private var movieTitle: String
+    
+    init(_ id: Int, title: String, managedObjectContext: NSManagedObjectContext) {
+        viewModel = MovieDetailViewModel(id, managedObjectContext: managedObjectContext)
+        movieTitle = title
         super.init(nibName: nil, bundle: nil)
         viewModel.viewController = self
     }
@@ -22,29 +25,38 @@ class MovieDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
-        setupBackgroundView()
-        movieTopView.isHidden = false
-        movieOverview.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.fetchMovieDetail()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.topItem?.title = ""
+        setupNavigationBar()
+        setupBackgroundView()
         super.viewWillAppear(animated)
     }
     
     private func setupNavigationBar() {
-        title = viewModel.movieTitle()
+        title = movieTitle
     }
     
     private func setupBackgroundView() {
         view.backgroundColor = .white
     }
     
+    func updateView() {
+        movieTopView.isHidden = false
+        movieOverview.isHidden = false
+    }
+    
     private lazy var movieTopView: MovieDetailTopView = {
-        let topView = MovieDetailTopView(frame: .zero, movieModel: viewModel.movieInfoModel())
+        let topView = MovieDetailTopView(frame: .zero, movieModel: viewModel.movieDetailModel())
         topView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(topView)
@@ -55,7 +67,7 @@ class MovieDetailViewController: UIViewController {
     }()
     
     private lazy var movieOverview: MovieDetailOverview = {
-        let overview = MovieDetailOverview(frame: .zero, movieModel: viewModel.movieInfoModel())
+        let overview = MovieDetailOverview(frame: .zero, movieModel: viewModel.movieDetailModel())
         overview.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(overview)

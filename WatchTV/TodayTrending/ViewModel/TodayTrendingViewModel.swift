@@ -25,7 +25,9 @@ class TodayTrendingViewDataModel {
 public class TodayTrendingViewModel: MovieListViewModelProtocol {
     
     private var isLoading: Bool
+    private var isConnected: Bool = false
     private let dataModel: TodayTrendingViewDataModel
+    private var networkMonitor: NetworkPathMonitorProtocol
     private let managedObjectContext: NSManagedObjectContext
     private lazy var networkManager: NetworkManager = {
         return NetworkManager()
@@ -37,23 +39,47 @@ public class TodayTrendingViewModel: MovieListViewModelProtocol {
         dataModel = TodayTrendingViewDataModel()
         managedObjectContext = moc
         isLoading = true
+        networkMonitor = NetworkPathMonitor()
+        networkMonitor.pathUpdateHandler = { [weak self] status in
+            DispatchQueue.main.async { [weak self] in
+                print("Network changed. Connected: \(status == .satisfied)")
+                self?.isConnected = status == .satisfied
+            }
+        }
+        networkMonitor.start(queue: DispatchQueue.global())
+    }
+    
+    deinit {
+        self.networkMonitor.cancel();
     }
     
     func fetchTodayTrendingData() {
-        networkManager.fetchTodayTrending(page: 1) { (response) in
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                guard let response = response else {
-                    self.updateViewWithCachedMovieList()
-                    return
+        guard isLoading else {
+            return
+        }
+        if isConnected {
+            print("Fetch today trending on network")
+            networkManager.fetchTodayTrending(page: 1) { (response) in
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    guard let response = response else {
+                        self.updateViewWithCachedMovieList()
+                        return
+                    }
+                    self.handleTodayTrendingResult(todayTrendingModel: response)
                 }
-                self.handleTodayTrendingResult(todayTrendingModel: response)
             }
+        } else {
+            print("Fetch today trending on local")
+            handleTodayTrendingMO(movies: TodayTrendingMOHandler.fetchTodayTrendingMovies(in: managedObjectContext))
         }
     }
     
     func fetchNextPageTodayTrendingData() {
-        networkManager.fetchTodayTrending(page: dataModel.currentPageNumber+1) { (response) in
+        guard isLoading else {
+            return
+        }
+        networkManager.fetchTodayTrending(page: dataModel.currentPageNumber + 1) { (response) in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 guard let response = response else {
@@ -72,6 +98,11 @@ public class TodayTrendingViewModel: MovieListViewModelProtocol {
         TodayTrendingMOHandler.saveTodayTrendingMovies(dataModel.movieList, moc: managedObjectContext)
     }
     
+    func handleTodayTrendingMO(movies: [MovieItemModel]) {
+        addMovieInfoModelToMovieList(movies)
+        updateView()
+    }
+    
     func handlePageDetails(todayTrendingModel: TodayTrendingResponseModel) {
         updateLastFetchedPageNumber(todayTrendingModel)
     }
@@ -85,7 +116,7 @@ public class TodayTrendingViewModel: MovieListViewModelProtocol {
     func updateLastFetchedPageNumber(_ todayTrendingModel: TodayTrendingResponseModel) {
         dataModel.currentPageNumber = todayTrendingModel.page
         dataModel.totalPages = todayTrendingModel.totalPages
-        print("\(dataModel.currentPageNumber) out of \(dataModel.totalPages)")
+        print("Load more: \(dataModel.currentPageNumber) out of \(dataModel.totalPages)")
     }
     
     func updateViewWithCachedMovieList() {
@@ -130,7 +161,7 @@ extension TodayTrendingViewModel {
     }
     
     func handlePaginationRequired() {
-        if !isLoading && dataModel.currentPageNumber != 0 {
+        if !isLoading && dataModel.currentPageNumber != 0 && isConnected {
             isLoading = true
             fetchNextPageTodayTrendingData()
         }

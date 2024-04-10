@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class MovieDetailTopView: UIView {
-    private var movieModel: MovieItemModel
+    private var movieModel: MovieDetailModel?
     
-    init(frame: CGRect, movieModel: MovieItemModel) {
+    init(frame: CGRect, movieModel: MovieDetailModel?) {
         self.movieModel = movieModel
         super.init(frame: frame)
         self.movieImage.isHidden = false
@@ -35,7 +35,7 @@ class MovieDetailTopView: UIView {
         imageView.backgroundColor = .clear
         imageView.clipsToBounds = true
         
-        ImageHelper.setupImageForView(imageView, url: movieModel.posterPath)
+        ImageHelper.setupImageForView(imageView, url: movieModel?.posterPath)
         return imageView
     }()
     

@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 class MovieDetailOverview: UIView {
-    private var movieModel: MovieItemModel
+    private var movieModel: MovieDetailModel?
     
-    init(frame: CGRect, movieModel: MovieItemModel) {
+    init(frame: CGRect, movieModel: MovieDetailModel?) {
         self.movieModel = movieModel
         super.init(frame: frame)
         self.backgroundColor = .clear
@@ -44,7 +44,7 @@ class MovieDetailOverview: UIView {
         let textView = UITextView(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isEditable = false
-        textView.text = movieModel.overview
+        textView.text = movieModel?.overview ?? ""
         textView.textColor = .gray
         textView.font = .systemFont(ofSize: 16)
         

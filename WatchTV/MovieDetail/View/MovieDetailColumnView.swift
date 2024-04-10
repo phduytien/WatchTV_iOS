@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class MovieDetailColumnView: UIView {
-    private var movieModel: MovieItemModel
+    private var movieModel: MovieDetailModel?
     
-    init(frame: CGRect, movieModel: MovieItemModel) {
+    init(frame: CGRect, movieModel: MovieDetailModel?) {
         self.movieModel = movieModel
         super.init(frame: frame)
         self.backgroundColor = .clear
@@ -38,9 +38,9 @@ class MovieDetailColumnView: UIView {
     
     func addViewsToStackView() {
         stackView.addArrangedSubview(UIView())
-        stackView.addArrangedSubview(arrangedViewForTitleAndSubtitle("Release Date", subtitle: movieModel.releaseDate))
-        stackView.addArrangedSubview(arrangedViewForTitleAndSubtitle("⭐️ Rating", subtitle: "\(String(movieModel.voteAverage))/10"))
-        stackView.addArrangedSubview(arrangedViewForTitleAndSubtitle("♥️ Popularity", subtitle: "\(String(movieModel.popularity))"))
+        stackView.addArrangedSubview(arrangedViewForTitleAndSubtitle("Release Date", subtitle: movieModel?.releaseDate ?? "N/A"))
+        stackView.addArrangedSubview(arrangedViewForTitleAndSubtitle("⭐️ Rating", subtitle: "\(String(movieModel?.voteAverage ?? 0))/10"))
+        stackView.addArrangedSubview(arrangedViewForTitleAndSubtitle("♥️ Popularity", subtitle: "\(String(movieModel?.popularity ?? 0))"))
         stackView.addArrangedSubview(UIView())
     }
     
