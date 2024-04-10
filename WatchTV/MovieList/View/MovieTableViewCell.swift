@@ -29,7 +29,6 @@ class MovieTableViewCell: UITableViewCell {
         
         contentView.addSubview(view)
         view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-        view.heightAnchor.constraint(equalToConstant: 150).isActive = true
         view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
         view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true

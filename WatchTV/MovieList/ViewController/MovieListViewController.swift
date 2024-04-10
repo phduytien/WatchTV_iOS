@@ -109,6 +109,10 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource, M
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let movieModel = viewModel.movieItemModel(at: indexPath.row) {
             let movieDetailsVC = MovieDetailViewController(movieModel, managedObjectContext: viewModel.currentMOC())

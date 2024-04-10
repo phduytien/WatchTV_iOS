@@ -30,8 +30,9 @@ class MovieInfoView: UIView {
         imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        imageView.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6).isActive = true
-        
+        imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 140).isActive = true
+
         imageView.backgroundColor = .clear
         imageView.clipsToBounds = true
         
