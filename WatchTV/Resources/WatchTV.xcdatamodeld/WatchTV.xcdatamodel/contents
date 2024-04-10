@@ -4,13 +4,18 @@
         <attribute name="movieListData" optional="YES" attributeType="Binary"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="SavedItemsMO" representedClassName="SavedItemsMO" syncable="YES" codeGenerationType="class">
+    <entity name="MovieDetailMO" representedClassName="MovieDetailMO" syncable="YES" codeGenerationType="class">
+        <attribute name="movieDetailData" optional="YES" attributeType="Binary"/>
         <attribute name="movieId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="movieInfoData" optional="YES" attributeType="Binary"/>
-        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="SearchMovieListMO" representedClassName="SearchMovieListMO" syncable="YES" codeGenerationType="class">
+        <attribute name="keyword" optional="YES" attributeType="String"/>
+        <attribute name="movieListData" optional="YES" attributeType="Binary"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="TodayTrendingMO" representedClassName="TodayTrendingMO" syncable="YES" codeGenerationType="class">
         <attribute name="movieListData" optional="YES" attributeType="Binary"/>
-        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
 </model>

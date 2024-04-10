@@ -17,7 +17,7 @@ class TodayTrendingViewDataModel {
     init() {
         movieList = []
         currentPageNumber = 0
-        totalPages = 100 // default upper limit
+        totalPages = 100
     }
 }
 
@@ -69,7 +69,7 @@ public class TodayTrendingViewModel: MovieListViewModelProtocol {
         handlePageDetails(todayTrendingModel: todayTrendingModel)
         addMovieInfoModelToMovieList(todayTrendingModel.results)
         updateView()
-        NowPlayingMOHandler.saveCurrentMovieList(dataModel.movieList, moc: managedObjectContext)
+        TodayTrendingMOHandler.saveTodayTrendingMovies(dataModel.movieList, moc: managedObjectContext)
     }
     
     func handlePageDetails(todayTrendingModel: TodayTrendingResponseModel) {
@@ -89,7 +89,7 @@ public class TodayTrendingViewModel: MovieListViewModelProtocol {
     }
     
     func updateViewWithCachedMovieList() {
-        let movieModelList = NowPlayingMOHandler.fetchSavedNowPlayingMovieList(in: managedObjectContext)
+        let movieModelList = TodayTrendingMOHandler.fetchTodayTrendingMovies(in: managedObjectContext)
         addMovieInfoModelToMovieList(movieModelList)
         updateView()
     }

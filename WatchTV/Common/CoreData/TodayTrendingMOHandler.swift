@@ -8,45 +8,47 @@
 import Foundation
 import CoreData
 
-class NowPlayingMOHandler {
-    static func clearNowPlayingMO(moc: NSManagedObjectContext) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TodayTrendingMO")
+class TodayTrendingMOHandler {
+    
+    private static let entityName = "TodayTrendingMO"
+    
+    
+    static func saveTodayTrendingMovies(_ movies: [MovieItemModel], moc: NSManagedObjectContext) {
+        TodayTrendingMOHandler.clearTodayTrendingMovies(moc: moc)
+        if let entity = NSEntityDescription.entity(forEntityName: TodayTrendingMOHandler.entityName, in: moc) {
+            let moviesMO = NSManagedObject(entity: entity, insertInto: moc)
+            do {
+                let moviesData = try? JSONEncoder().encode(movies)
+                moviesMO.setValue(moviesData, forKeyPath: "movieListData")
+                moviesMO.setValue(Date(), forKey: "timestamp")
+                try moc.save()
+            } catch let error as NSError {
+                print("Could not save TodayTrendingMO entity record. Error \(error)")
+            }
+        }
+    }
+    
+    static func fetchTodayTrendingMovies(in moc: NSManagedObjectContext) -> [MovieItemModel] {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: TodayTrendingMOHandler.entityName)
+        do {
+            let moviesMO = try moc.fetch(fetchRequest)
+            guard moviesMO.count > 0, let moviesData = moviesMO[0].value(forKey: "movieListData") as? Data, let movies = try? JSONDecoder().decode([MovieItemModel].self, from: moviesData) else {
+                return []
+            }
+            return movies
+        } catch let error as NSError {
+            print("Could not fetch TodayTrendingMO entity record. Error \(error)")
+        }
+        return []
+    }
+    
+    static func clearTodayTrendingMovies(moc: NSManagedObjectContext) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TodayTrendingMOHandler.entityName)
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
             try moc.execute(batchDeleteRequest)
         } catch {
-            print("Could not delete NowPlayingMO entity records. \(error)")
+            print("Could not remove TodayTrendingMO entity record. Error: \(error)")
         }
-    }
-    
-    static func saveCurrentMovieList(_ movieInfoList: [MovieItemModel], moc: NSManagedObjectContext) {
-        NowPlayingMOHandler.clearNowPlayingMO(moc: moc)
-        if let entity = NSEntityDescription.entity(forEntityName: "NowPlayingMO", in: moc) {
-            let nowPlayingMO = NSManagedObject(entity: entity, insertInto: moc)
-            let movieListData = try? JSONEncoder().encode(movieInfoList)
-            nowPlayingMO.setValue(movieListData, forKeyPath: "movieListData")
-            nowPlayingMO.setValue(Date(), forKey: "timeStamp")
-            do {
-                try moc.save()
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
-        }
-    }
-    
-    static func fetchSavedNowPlayingMovieList(in moc: NSManagedObjectContext) -> [MovieItemModel] {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "NowPlayingMO")
-        do {
-            let nowPlayingMO = try moc.fetch(fetchRequest)
-            guard nowPlayingMO.count > 0, let loadedMovieListData = nowPlayingMO[0].value(forKey: "movieListData") as? Data, let loadedMovieList = try? JSONDecoder().decode([MovieItemModel].self, from: loadedMovieListData) else {
-                return []
-            }
-            return loadedMovieList
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        return []
     }
 }
-
-
