@@ -8,45 +8,52 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct ContentView: UIViewControllerRepresentable {
     @Environment(\.managedObjectContext) private var viewContext
+    
+    func makeUIViewController(context: Context) -> UINavigationController {
+        let viewController = TodayTrendingViewController(viewContext)
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.setNavigationBarHidden(true, animated: false)
+        return navController
+    }
+    
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
+        // Does nothing
+    }
+}
 
+struct ContentViewDemo: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        List {
+            ForEach(items) { item in
+                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+            .onDelete(perform: deleteItems)
+        }
+        .toolbar {
+#if os(iOS)
+            EditButton()
+#endif
+            
+            Button(action: addItem) {
+                Label("Add Item", systemImage: "plus")
             }
-            Text("Select an item")
         }
     }
-
+    
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -57,11 +64,11 @@ struct ContentView: View {
             }
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -81,6 +88,8 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-#Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentViewDemo().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
 }
