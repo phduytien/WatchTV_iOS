@@ -4,9 +4,9 @@
 target 'WatchTV' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for WatchTV
   pod 'Nuke', '~> 10.7'
+  # Pods for WatchTV
+
   target 'WatchTVTests' do
     inherit! :search_paths
     # Pods for testing
