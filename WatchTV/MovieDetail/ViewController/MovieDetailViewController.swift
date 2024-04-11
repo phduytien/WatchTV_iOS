@@ -28,10 +28,7 @@ class MovieDetailViewController: UIViewController, MovieDetailViewControllerProt
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            guard let self = self else { return }
-            self.viewModel.fetchMovieDetail()
-        }
+        self.viewModel.fetchMovieDetail()
     }
     
     override func viewWillAppear(_ animated: Bool) {

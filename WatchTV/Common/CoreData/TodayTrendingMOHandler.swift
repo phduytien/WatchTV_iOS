@@ -19,7 +19,7 @@ class TodayTrendingMOHandler {
             let moviesMO = NSManagedObject(entity: entity, insertInto: moc)
             do {
                 let moviesData = try? JSONEncoder().encode(movies)
-                moviesMO.setValue(moviesData, forKeyPath: "movieListData")
+                moviesMO.setValue(moviesData, forKey: "movieListData")
                 moviesMO.setValue(Date(), forKey: "timestamp")
                 try moc.save()
             } catch let error as NSError {

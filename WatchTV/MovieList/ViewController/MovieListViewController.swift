@@ -25,26 +25,34 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            guard let self = self else { return }
-            self.viewModel.loadViewInitialData()
-        }
+        setupSearchBar()
+        self.viewModel.loadViewInitialData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
         setupNavigationBar();
         setupBackgroundView()
-        super.viewWillAppear(animated)
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     private func setupNavigationBar() {
         title = "Trending Today"
+    }
+    
+    private func setupSearchBar() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search movie"
-        self.navigationItem.searchController = searchController
-        self.definesPresentationContext = true
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
         navigationItem.searchController = searchController
     }
     
@@ -85,11 +93,8 @@ class MovieListViewController: UIViewController {
     }()
 }
 
-extension MovieListViewController: UITableViewDelegate, UITableViewDataSource, MovieListViewControllerProtocol {
-    func updateView() {
-        tableView.reloadData()
-    }
-    
+// MARK: - UITableViewDelegate, UITableViewDataSource
+extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -125,5 +130,23 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource, M
             )
             navigationController?.pushViewController(movieDetailsVC, animated: true)
         }
+    }
+}
+
+// MARK: - MovieListViewControllerProtocol
+extension MovieListViewController: MovieListViewControllerProtocol {
+    func updateView() {
+        tableView.reloadData()
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+extension MovieListViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else {
+            viewModel.searchMovies(searchText: nil)
+            return
+        }
+        viewModel.searchMovies(searchText: searchText)
     }
 }

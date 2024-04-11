@@ -11,8 +11,8 @@ import CoreData
 protocol MovieListViewModelProtocol {
     var viewController: MovieListViewControllerProtocol? { get set }
     
-    func didTap()
     func loadViewInitialData()
+    func searchMovies(searchText: String?)
     func moviesCount() -> Int
     func movieItemModel(at index: Int) -> MovieItemModel?
     func currentMOC() -> NSManagedObjectContext
@@ -20,13 +20,10 @@ protocol MovieListViewModelProtocol {
 }
 
 class MovieListViewModel: MovieListViewModelProtocol {
+    
     weak var viewController: MovieListViewControllerProtocol?
     
     init() {
-        // Does nothing
-    }
-    
-    func didTap() {
         // Does nothing
     }
     
@@ -48,5 +45,9 @@ class MovieListViewModel: MovieListViewModelProtocol {
     
     func checkAndHandleIfPaginationRequired(at row: Int) {
         // Does nothing
+    }
+    
+    func searchMovies(searchText: String?) {
+    
     }
 }

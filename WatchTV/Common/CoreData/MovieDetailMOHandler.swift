@@ -17,7 +17,7 @@ class MovieDetailMOHandler {
         if let entity = NSEntityDescription.entity(forEntityName: MovieDetailMOHandler.entityName, in: moc) {
             let savedItemsMO = NSManagedObject(entity: entity, insertInto: moc)
             let movieDetailData = try? JSONEncoder().encode(movieDetail)
-            savedItemsMO.setValue(movieDetailData, forKeyPath: "movieDetailData")
+            savedItemsMO.setValue(movieDetailData, forKey: "movieDetailData")
             savedItemsMO.setValue(Date(), forKey: "timestamp")
             savedItemsMO.setValue(movieDetail.id, forKey: "movieId")
             
@@ -38,7 +38,7 @@ class MovieDetailMOHandler {
         fetchRequest.predicate = NSPredicate(format: "movieId == \(id)")
         do {
             let movieMO = try moc.fetch(fetchRequest)
-            guard movieMO.count > 0, let movieData = movieMO[0].value(forKey: "movieDetailData") as? Data, let movie = try? JSONDecoder().decode(MovieDetailModel.self, from: movieData) else {
+            guard movieMO.count > 0, let movieData = movieMO.first?.value(forKey: "movieDetailData") as? Data, let movie = try? JSONDecoder().decode(MovieDetailModel.self, from: movieData) else {
                 return nil
             }
             return movie

@@ -42,6 +42,7 @@
 		1AB30AFD2BC6A05F00AC7215 /* NetworkPathMonitorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30AFC2BC6A05F00AC7215 /* NetworkPathMonitorProtocol.swift */; };
 		1AB30B002BC6A0F600AC7215 /* MockNetworkPathMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30AFF2BC6A0F600AC7215 /* MockNetworkPathMonitor.swift */; };
 		1AB30B032BC6ABF000AC7215 /* MovieDetailViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B022BC6ABF000AC7215 /* MovieDetailViewControllerProtocol.swift */; };
+		1AB30B052BC7DB8800AC7215 /* SearchMoviesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B042BC7DB8800AC7215 /* SearchMoviesResponseModel.swift */; };
 		3916C1C76AFAFD4EAC4C93B0 /* Pods_WatchTV_WatchTVUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5E429B285479663D85C29D /* Pods_WatchTV_WatchTVUITests.framework */; };
 		809CBE9D787D2D8FBFB678B9 /* Pods_WatchTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7AAE6B960F505902A98382 /* Pods_WatchTV.framework */; };
 		CA4D24CBF6170CDE4756B2A6 /* Pods_WatchTVTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128834C6C6D624C949B99CE1 /* Pods_WatchTVTests.framework */; };
@@ -105,6 +106,7 @@
 		1AB30AFC2BC6A05F00AC7215 /* NetworkPathMonitorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPathMonitorProtocol.swift; sourceTree = "<group>"; };
 		1AB30AFF2BC6A0F600AC7215 /* MockNetworkPathMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkPathMonitor.swift; sourceTree = "<group>"; };
 		1AB30B022BC6ABF000AC7215 /* MovieDetailViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewControllerProtocol.swift; sourceTree = "<group>"; };
+		1AB30B042BC7DB8800AC7215 /* SearchMoviesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesResponseModel.swift; sourceTree = "<group>"; };
 		3D114A2728FB3EF6ABF70C3A /* Pods-WatchTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchTV.release.xcconfig"; path = "Target Support Files/Pods-WatchTV/Pods-WatchTV.release.xcconfig"; sourceTree = "<group>"; };
 		5C5E429B285479663D85C29D /* Pods_WatchTV_WatchTVUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchTV_WatchTVUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9683BBD3179D1A34E42EB861 /* Pods-WatchTVTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchTVTests.debug.xcconfig"; path = "Target Support Files/Pods-WatchTVTests/Pods-WatchTVTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				1AB30AC42BC63FEE00AC7215 /* MovieItemModel.swift */,
 				1AB30AC62BC6400F00AC7215 /* TodayTrendingReponseModel.swift */,
 				1AB30ACD2BC6460600AC7215 /* MovieDetailModel.swift */,
+				1AB30B042BC7DB8800AC7215 /* SearchMoviesResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				1AB30ABB2BC63EA400AC7215 /* UIFont+Helper.swift in Sources */,
 				1AB30AD62BC648E800AC7215 /* MovieDetailColumnView.swift in Sources */,
 				1AB30B032BC6ABF000AC7215 /* MovieDetailViewControllerProtocol.swift in Sources */,
+				1AB30B052BC7DB8800AC7215 /* SearchMoviesResponseModel.swift in Sources */,
 				1AB30AEC2BC64D5A00AC7215 /* MovieListViewControllerProtocol.swift in Sources */,
 				1AB30AD82BC648F600AC7215 /* MovieDetailOverview.swift in Sources */,
 				1AB30AF32BC6543C00AC7215 /* TodayTrendingViewController.swift in Sources */,

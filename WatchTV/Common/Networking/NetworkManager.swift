@@ -40,8 +40,8 @@ public class NetworkManager {
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let decodedNowPlayingModel = try decoder.decode(TodayTrendingResponseModel.self, from: jsonData)
-                    completionHandler(decodedNowPlayingModel)
+                    let response = try decoder.decode(TodayTrendingResponseModel.self, from: jsonData)
+                    completionHandler(response)
                 } catch {
                     print("JSON error: \(error.localizedDescription)")
                 }
@@ -50,7 +50,7 @@ public class NetworkManager {
         task.resume()
     }
     
-    func searchMovies(keyword: String, page: Int, completionHandler: @escaping (TodayTrendingResponseModel?) -> Void) {
+    func searchMovies(keyword: String, page: Int, completionHandler: @escaping (SearchMoviesResponseModel?) -> Void) {
         guard let url = URL(string: "\(apiPathV3)/search/movie?query=\(keyword)&include_adult=false&api_key=\(apiKey)&language=en-US&page=\(page)") else {
             return
         }
@@ -69,8 +69,8 @@ public class NetworkManager {
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let decodedNowPlayingModel = try decoder.decode(TodayTrendingResponseModel.self, from: jsonData)
-                    completionHandler(decodedNowPlayingModel)
+                    let response = try decoder.decode(SearchMoviesResponseModel.self, from: jsonData)
+                    completionHandler(response)
                 } catch {
                     print("JSON error: \(error.localizedDescription)")
                 }
