@@ -9,4 +9,5 @@ import Foundation
 
 protocol MovieListViewControllerProtocol: AnyObject {
     func updateView()
+    func showMessage(_ message: String, type: MessageType)
 }

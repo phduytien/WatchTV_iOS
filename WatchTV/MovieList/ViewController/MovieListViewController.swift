@@ -135,6 +135,10 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - MovieListViewControllerProtocol
 extension MovieListViewController: MovieListViewControllerProtocol {
+    func showMessage(_ message: String, type: MessageType) {
+        Toast.showToast( message: message, type: type)
+    }
+    
     func updateView() {
         tableView.reloadData()
     }

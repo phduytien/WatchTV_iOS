@@ -42,6 +42,8 @@
 		1AB30B032BC6ABF000AC7215 /* MovieDetailViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B022BC6ABF000AC7215 /* MovieDetailViewControllerProtocol.swift */; };
 		1AB30B052BC7DB8800AC7215 /* SearchMoviesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B042BC7DB8800AC7215 /* SearchMoviesResponseModel.swift */; };
 		1AB30B082BC8310A00AC7215 /* TodayTrendingPageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B072BC8310A00AC7215 /* TodayTrendingPageUITests.swift */; };
+		1AB30B0A2BC8388D00AC7215 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B092BC8388D00AC7215 /* Toast.swift */; };
+		1AB30B0C2BC8407B00AC7215 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B0B2BC8407B00AC7215 /* UIColor+Hex.swift */; };
 		3916C1C76AFAFD4EAC4C93B0 /* Pods_WatchTV_WatchTVUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5E429B285479663D85C29D /* Pods_WatchTV_WatchTVUITests.framework */; };
 		809CBE9D787D2D8FBFB678B9 /* Pods_WatchTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7AAE6B960F505902A98382 /* Pods_WatchTV.framework */; };
 		CA4D24CBF6170CDE4756B2A6 /* Pods_WatchTVTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128834C6C6D624C949B99CE1 /* Pods_WatchTVTests.framework */; };
@@ -106,6 +108,8 @@
 		1AB30B042BC7DB8800AC7215 /* SearchMoviesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesResponseModel.swift; sourceTree = "<group>"; };
 		1AB30B062BC8310900AC7215 /* WatchTVUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WatchTVUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		1AB30B072BC8310A00AC7215 /* TodayTrendingPageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTrendingPageUITests.swift; sourceTree = "<group>"; };
+		1AB30B092BC8388D00AC7215 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		1AB30B0B2BC8407B00AC7215 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		3D114A2728FB3EF6ABF70C3A /* Pods-WatchTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchTV.release.xcconfig"; path = "Target Support Files/Pods-WatchTV/Pods-WatchTV.release.xcconfig"; sourceTree = "<group>"; };
 		5C5E429B285479663D85C29D /* Pods_WatchTV_WatchTVUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchTV_WatchTVUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9683BBD3179D1A34E42EB861 /* Pods-WatchTVTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchTVTests.debug.xcconfig"; path = "Target Support Files/Pods-WatchTVTests/Pods-WatchTVTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 			children = (
 				1AB30ABA2BC63EA400AC7215 /* UIFont+Helper.swift */,
 				1AB30ABC2BC63ED400AC7215 /* ImageHelper.swift */,
+				1AB30B092BC8388D00AC7215 /* Toast.swift */,
+				1AB30B0B2BC8407B00AC7215 /* UIColor+Hex.swift */,
 			);
 			path = SystemExtensions;
 			sourceTree = "<group>";
@@ -676,6 +682,8 @@
 				1AB30AC52BC63FEE00AC7215 /* MovieItemModel.swift in Sources */,
 				1AB30ADB2BC649A100AC7215 /* MovieDetailViewController.swift in Sources */,
 				1AB30AF72BC6836800AC7215 /* MovieDetailMOHandler.swift in Sources */,
+				1AB30B0A2BC8388D00AC7215 /* Toast.swift in Sources */,
+				1AB30B0C2BC8407B00AC7215 /* UIColor+Hex.swift in Sources */,
 				1AB30AC22BC63F6100AC7215 /* TodayTrendingMOHandler.swift in Sources */,
 				1AB30A882BC63B7A00AC7215 /* WatchTVApp.swift in Sources */,
 				1AB30AFD2BC6A05F00AC7215 /* NetworkPathMonitorProtocol.swift in Sources */,

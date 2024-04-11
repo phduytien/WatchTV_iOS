@@ -29,7 +29,10 @@ class MovieDetailViewModel {
         networkMonitor.pathUpdateHandler = { [weak self] status in
             DispatchQueue.main.async { [weak self] in
                 print("Network changed. Connected: \(status == .satisfied)")
-                self?.isConnected = status == .satisfied
+                let connected = status == .satisfied
+                if connected != self?.isConnected {
+                    self?.isConnected = connected
+                }
             }
         }
         networkMonitor.start(queue: DispatchQueue.global())

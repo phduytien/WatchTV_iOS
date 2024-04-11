@@ -38,7 +38,14 @@ public class TodayTrendingViewModel {
         networkMonitor.pathUpdateHandler = { [weak self] status in
             DispatchQueue.main.async { [weak self] in
                 print("Network changed. Connected: \(status == .satisfied)")
-                self?.isConnected = status == .satisfied
+                let connected = status == .satisfied
+                if connected != self?.isConnected {
+                    self?.isConnected = connected
+                    self?.viewController?.showMessage(
+                        status == .satisfied ? "Internet Connected!" : "No Internet Connection",
+                        type: status == .satisfied ? MessageType.success : MessageType.warning
+                    )
+                }
             }
         }
         return networkMonitor
