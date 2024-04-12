@@ -14,8 +14,13 @@ class MovieDetailViewController: UIViewController {
     private var viewModel: MovieDetailViewModel
     private var movieTitle: String
     
-    init(_ id: Int, title: String, managedObjectContext: NSManagedObjectContext) {
-        viewModel = MovieDetailViewModel(id, managedObjectContext: managedObjectContext)
+    init(_ id: Int, title: String, managedObjectContext: NSManagedObjectContext, networkMonitor: NetworkPathMonitorProtocol) {
+        viewModel = MovieDetailViewModel(
+            id,
+            managedObjectContext: managedObjectContext,
+            networkMonitor: networkMonitor,
+            networkManager: NetworkManager()
+        )
         movieTitle = title
         super.init(nibName: nil, bundle: nil)
         viewModel.viewController = self

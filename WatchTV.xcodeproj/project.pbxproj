@@ -51,6 +51,9 @@
 		1AB30B182BC8F1AC00AC7215 /* today_trending_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AB30B142BC8E76F00AC7215 /* today_trending_data.json */; };
 		1AB30B1B2BC8FD5500AC7215 /* search_movies_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AB30B192BC8FD5500AC7215 /* search_movies_data.json */; };
 		1AB30B1C2BC8FD5500AC7215 /* movie_detail_978592.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AB30B1A2BC8FD5500AC7215 /* movie_detail_978592.json */; };
+		1AB30B1E2BC90AF200AC7215 /* MockMovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B1D2BC90AF200AC7215 /* MockMovieDetailViewController.swift */; };
+		1AB30B202BC90B4900AC7215 /* MovieDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B1F2BC90B4900AC7215 /* MovieDetailViewModelTests.swift */; };
+		1AB30B222BC91A3900AC7215 /* MovieDetailMOHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B212BC91A3900AC7215 /* MovieDetailMOHandlerTests.swift */; };
 		3916C1C76AFAFD4EAC4C93B0 /* Pods_WatchTV_WatchTVUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5E429B285479663D85C29D /* Pods_WatchTV_WatchTVUITests.framework */; };
 		809CBE9D787D2D8FBFB678B9 /* Pods_WatchTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7AAE6B960F505902A98382 /* Pods_WatchTV.framework */; };
 		CA4D24CBF6170CDE4756B2A6 /* Pods_WatchTVTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128834C6C6D624C949B99CE1 /* Pods_WatchTVTests.framework */; };
@@ -123,6 +126,9 @@
 		1AB30B162BC8E8C800AC7215 /* JSONHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHelpers.swift; sourceTree = "<group>"; };
 		1AB30B192BC8FD5500AC7215 /* search_movies_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = search_movies_data.json; sourceTree = "<group>"; };
 		1AB30B1A2BC8FD5500AC7215 /* movie_detail_978592.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movie_detail_978592.json; sourceTree = "<group>"; };
+		1AB30B1D2BC90AF200AC7215 /* MockMovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieDetailViewController.swift; sourceTree = "<group>"; };
+		1AB30B1F2BC90B4900AC7215 /* MovieDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModelTests.swift; sourceTree = "<group>"; };
+		1AB30B212BC91A3900AC7215 /* MovieDetailMOHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailMOHandlerTests.swift; sourceTree = "<group>"; };
 		3D114A2728FB3EF6ABF70C3A /* Pods-WatchTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchTV.release.xcconfig"; path = "Target Support Files/Pods-WatchTV/Pods-WatchTV.release.xcconfig"; sourceTree = "<group>"; };
 		5C5E429B285479663D85C29D /* Pods_WatchTV_WatchTVUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchTV_WatchTVUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9683BBD3179D1A34E42EB861 /* Pods-WatchTVTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchTVTests.debug.xcconfig"; path = "Target Support Files/Pods-WatchTVTests/Pods-WatchTVTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +217,8 @@
 				1AB30B132BC8E6A900AC7215 /* MockData */,
 				1AB30AFE2BC6A0E200AC7215 /* Mock */,
 				1AB30B0D2BC8E42200AC7215 /* NetworkManagerTests.swift */,
+				1AB30B1F2BC90B4900AC7215 /* MovieDetailViewModelTests.swift */,
+				1AB30B212BC91A3900AC7215 /* MovieDetailMOHandlerTests.swift */,
 			);
 			path = WatchTVTests;
 			sourceTree = "<group>";
@@ -400,6 +408,7 @@
 				1AB30AFF2BC6A0F600AC7215 /* MockNetworkPathMonitor.swift */,
 				1AB30B0F2BC8E48800AC7215 /* MockURLSession.swift */,
 				1AB30B112BC8E4A000AC7215 /* MockURLSessionDataTask.swift */,
+				1AB30B1D2BC90AF200AC7215 /* MockMovieDetailViewController.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -729,7 +738,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AB30B172BC8E8C800AC7215 /* JSONHelpers.swift in Sources */,
+				1AB30B202BC90B4900AC7215 /* MovieDetailViewModelTests.swift in Sources */,
+				1AB30B222BC91A3900AC7215 /* MovieDetailMOHandlerTests.swift in Sources */,
 				1AB30B102BC8E48800AC7215 /* MockURLSession.swift in Sources */,
+				1AB30B1E2BC90AF200AC7215 /* MockMovieDetailViewController.swift in Sources */,
 				1AB30B122BC8E4A000AC7215 /* MockURLSessionDataTask.swift in Sources */,
 				1AB30B0E2BC8E42200AC7215 /* NetworkManagerTests.swift in Sources */,
 				1AB30B002BC6A0F600AC7215 /* MockNetworkPathMonitor.swift in Sources */,

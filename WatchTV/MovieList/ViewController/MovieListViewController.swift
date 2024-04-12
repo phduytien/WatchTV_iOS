@@ -128,7 +128,8 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
             let movieDetailsVC = MovieDetailViewController(
                 movie.id,
                 title: movie.title,
-                managedObjectContext: viewModel.currentMOC()
+                managedObjectContext: viewModel.currentMOC(),
+                networkMonitor:  NetworkPathMonitor()
             )
             navigationController?.pushViewController(movieDetailsVC, animated: true)
         }

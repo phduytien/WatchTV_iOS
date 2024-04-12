@@ -17,16 +17,16 @@ class MovieDetailViewModel {
     private var id: Int
     private var managedObjectContext: NSManagedObjectContext
     private var networkMonitor: NetworkPathMonitorProtocol
-    private lazy var networkManager: NetworkManager = {
-        return NetworkManager()
-    }()
+    private var networkManager: NetworkManager
+    
     private var isConnected = true
     
-    init(_ id: Int, managedObjectContext: NSManagedObjectContext) {
+    init(_ id: Int, managedObjectContext: NSManagedObjectContext, networkMonitor: NetworkPathMonitorProtocol, networkManager: NetworkManager) {
         self.id = id
         self.managedObjectContext = managedObjectContext
-        networkMonitor = NetworkPathMonitor()
-        networkMonitor.pathUpdateHandler = { [weak self] status in
+        self.networkManager = networkManager
+        self.networkMonitor = networkMonitor
+        self.networkMonitor.pathUpdateHandler = { [weak self] status in
             DispatchQueue.main.async { [weak self] in
                 print("Network changed. Connected: \(status == .satisfied)")
                 let connected = status == .satisfied
@@ -39,7 +39,7 @@ class MovieDetailViewModel {
                 }
             }
         }
-        networkMonitor.start(queue: DispatchQueue.global())
+        self.networkMonitor.start(queue: DispatchQueue.global())
     }
     
     deinit {

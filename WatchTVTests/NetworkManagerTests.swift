@@ -171,8 +171,8 @@ class NetworkManagerTests: XCTestCase {
         
         XCTAssertNotNil(responseData)
         XCTAssertEqual(responseData?.page, 1, "Page is incorrect")
-        XCTAssertEqual(responseData?.totalPages, 1000, "Total pages is incorrect")
-        XCTAssertEqual(responseData?.totalResults, 20000, "Total results is incorrect")
+        XCTAssertEqual(responseData?.totalPages, 123, "Total pages is incorrect")
+        XCTAssertEqual(responseData?.totalResults, 2454, "Total results is incorrect")
         XCTAssertNotNil(responseData?.results.first)
         XCTAssertEqual(responseData?.results.first?.title, "A Very Long Engagement", "Response is incorrect")
         XCTAssertNil(responseError)
@@ -207,6 +207,12 @@ class NetworkManagerTests: XCTestCase {
         
         XCTAssertNil(responseData)
         XCTAssertEqual(responseError, "Something went wrong", "Error message is incorrect")
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        networkManager = nil
+        mockURLSession = nil
     }
 }
 

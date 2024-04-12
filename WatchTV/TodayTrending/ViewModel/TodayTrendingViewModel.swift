@@ -145,6 +145,10 @@ class TodayTrendingViewModel {
         updateView()
     }
     
+    func currentNetworkMonitor() -> NetworkPathMonitorProtocol {
+        return networkMonitor
+    }
+    
     // MARK:- Search Movie
     
     func fetchSearchMoviesData() {

@@ -9,23 +9,16 @@
 import Network
 
 final class MockNetworkPathMonitor: NetworkPathMonitorProtocol {
-
+    
+    var startCalled = false
+    var cancelCalled = false
     var pathUpdateHandler: ((NWPath.Status) -> Void)?
-    var currentNetworkStatus : NWPath.Status
-
-    var isStartCalled = false
-    var isCancelCalled = false
-
-    init(currentNetworkStatus : NWPath.Status = .unsatisfied) {
-        self.currentNetworkStatus = currentNetworkStatus
-    }
-
+    
     func start(queue: DispatchQueue) {
-        isStartCalled = true
-        pathUpdateHandler?(currentNetworkStatus)
+        startCalled = true
     }
-
+    
     func cancel() {
-        isCancelCalled = true
+        cancelCalled = true
     }
 }
