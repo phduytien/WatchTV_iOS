@@ -192,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				1AB30AB82BC63E7600AC7215 /* Common */,
-				1AB30AC32BC63FD100AC7215 /* Models */,
 				1AB30AD02BC6486400AC7215 /* MovieDetail */,
 				1AB30AD12BC6488200AC7215 /* MovieList */,
 				1AB30AEF2BC653F600AC7215 /* TodayTrending */,
@@ -282,17 +281,6 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		1AB30AC32BC63FD100AC7215 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				1AB30AC42BC63FEE00AC7215 /* MovieItemModel.swift */,
-				1AB30AC62BC6400F00AC7215 /* TodayTrendingReponseModel.swift */,
-				1AB30ACD2BC6460600AC7215 /* MovieDetailModel.swift */,
-				1AB30B042BC7DB8800AC7215 /* SearchMoviesResponseModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		1AB30ACA2BC6426800AC7215 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +294,7 @@
 		1AB30AD02BC6486400AC7215 /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
+				1AB30B232BC9377200AC7215 /* Model */,
 				1AB30B012BC6ABD900AC7215 /* Protocol */,
 				1AB30ADC2BC649DB00AC7215 /* ViewModel */,
 				1AB30AD92BC6497E00AC7215 /* ViewController */,
@@ -317,6 +306,7 @@
 		1AB30AD12BC6488200AC7215 /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
+				1AB30B242BC9377F00AC7215 /* Model */,
 				1AB30AE82BC64CF200AC7215 /* Protocol */,
 				1AB30AE12BC64ACE00AC7215 /* ViewController */,
 				1AB30ADF2BC64AC100AC7215 /* View */,
@@ -430,6 +420,24 @@
 				1AB30B162BC8E8C800AC7215 /* JSONHelpers.swift */,
 			);
 			path = MockData;
+			sourceTree = "<group>";
+		};
+		1AB30B232BC9377200AC7215 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1AB30ACD2BC6460600AC7215 /* MovieDetailModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1AB30B242BC9377F00AC7215 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1AB30AC42BC63FEE00AC7215 /* MovieItemModel.swift */,
+				1AB30AC62BC6400F00AC7215 /* TodayTrendingReponseModel.swift */,
+				1AB30B042BC7DB8800AC7215 /* SearchMoviesResponseModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		460F4259837CABB7C764F59E /* Frameworks */ = {
