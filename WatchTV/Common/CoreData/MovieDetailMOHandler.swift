@@ -13,7 +13,10 @@ class MovieDetailMOHandler {
     private static let entityName = "MovieDetailMO";
     
     static func addMovieDetail(_ movieDetail: MovieDetailModel, moc: NSManagedObjectContext) {
-        if checkMovieDetailIsExist(movieDetail.id, moc: moc) { return }
+        if checkMovieDetailIsExist(movieDetail.id, moc: moc) {
+            removeMovieDetail(movieDetail.id, moc: moc)
+            return
+        }
         if let entity = NSEntityDescription.entity(forEntityName: MovieDetailMOHandler.entityName, in: moc) {
             let savedItemsMO = NSManagedObject(entity: entity, insertInto: moc)
             let movieDetailData = try? JSONEncoder().encode(movieDetail)

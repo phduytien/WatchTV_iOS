@@ -18,7 +18,12 @@ class MovieDetailMOHandlerTests: XCTestCase {
         // Initialize a mock persistent container to create a managed object context
         let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])!
         let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        try! persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
+        try! persistentStoreCoordinator.addPersistentStore(
+            ofType: NSInMemoryStoreType,
+            configurationName: nil,
+            at: nil,
+            options: nil
+        )
         
         // Create managed object context from the persistent store coordinator
         moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
@@ -48,7 +53,7 @@ class MovieDetailMOHandlerTests: XCTestCase {
         }
     }
     
-    func testGet() {
+    func testGetMovieDetail() {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         do {
