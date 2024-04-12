@@ -20,7 +20,7 @@ class MovieDetailViewModel {
     private lazy var networkManager: NetworkManager = {
         return NetworkManager()
     }()
-    private var isConnected: Bool = false
+    private var isConnected = true
     
     init(_ id: Int, managedObjectContext: NSManagedObjectContext) {
         self.id = id
@@ -30,7 +30,7 @@ class MovieDetailViewModel {
             DispatchQueue.main.async { [weak self] in
                 print("Network changed. Connected: \(status == .satisfied)")
                 let connected = status == .satisfied
-                if connected != self?.isConnected {
+                if !connected || connected != self?.isConnected {
                     self?.isConnected = connected
                     self?.viewController?.showMessage(
                         status == .satisfied ? "Internet Connected!" : "No Internet Connection. Offline Mode",

@@ -1,0 +1,88 @@
+{
+  "adult": false,
+  "backdrop_path": "/s1pLloOCKSEzaOwz8PRJgyo5TFX.jpg",
+  "belongs_to_collection": null,
+  "budget": 0,
+  "genres": [
+    {
+      "id": 18,
+      "name": "Drama"
+    },
+    {
+      "id": 53,
+      "name": "Thriller"
+    },
+    {
+      "id": 9648,
+      "name": "Mystery"
+    }
+  ],
+  "homepage": "",
+  "id": 978592,
+  "imdb_id": "tt8542964",
+  "original_language": "en",
+  "original_title": "Sleeping Dogs",
+  "overview": "Roy Freeman, an ex-homicide detective with a fractured memory, is forced to revisit a case he can't remember. As a man's life hangs in the balance on death row, Freeman must piece together the brutal evidence from a decade-old murder investigation, uncovering a sinister web of buried secrets and betrayals linking to his past. With only instincts to trust, he faces a chilling truth - sometimes, it's best to let sleeping dogs lie.",
+  "popularity": 70.65,
+  "poster_path": "/5DwQhh1HvTo7edaOeMX49NUyZqy.jpg",
+  "production_companies": [
+    {
+      "id": 110723,
+      "logo_path": "/27Od860h9Xc7gDS3Pph6yRlUyBI.png",
+      "name": "Nickel City Pictures",
+      "origin_country": "US"
+    },
+    {
+      "id": 88277,
+      "logo_path": "/qrYIo8nWDg4sBdvYhoXn9hSyHPH.png",
+      "name": "New Leaf Literary & Media",
+      "origin_country": "US"
+    },
+    {
+      "id": 76991,
+      "logo_path": "/pQjdvbv4y9yuIDSHDEHc9ijJKaS.png",
+      "name": "Highland Film Group",
+      "origin_country": "US"
+    },
+    {
+      "id": 219277,
+      "logo_path": null,
+      "name": "G2 Dispatch",
+      "origin_country": "US"
+    },
+    {
+      "id": 219278,
+      "logo_path": null,
+      "name": "Gala Media Capital",
+      "origin_country": "US"
+    },
+    {
+      "id": 202232,
+      "logo_path": null,
+      "name": "JaiD7 Pictures",
+      "origin_country": "US"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "2024-03-21",
+  "revenue": 0,
+  "runtime": 110,
+  "spoken_languages": [
+    {
+      "english_name": "English",
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": "Some lies never die.",
+  "title": "Sleeping Dogs",
+  "video": false,
+  "vote_average": 7.1,
+  "vote_count": 26
+}

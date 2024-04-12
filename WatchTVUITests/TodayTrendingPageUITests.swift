@@ -41,7 +41,7 @@ final class TodayTrendingPageUITests: XCTestCase {
     func testTodayTrendingNavigateToMovieDetail() {
         let tableView = app.tables.element
         XCTAssertTrue(tableView.exists, "UITableView does not exist")
-        let firstCell = tableView.cells.element(boundBy: 0)
+        let firstCell = tableView.cells.firstMatch
         XCTAssertTrue(firstCell.exists, "First cell does not exist")
         firstCell.tap()
         XCTAssertTrue(app.navigationBars["Kung Fu Panda 4"].waitForExistence(timeout: 5), "Failed to navigate to movie screen")

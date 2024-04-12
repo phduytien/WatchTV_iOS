@@ -13,7 +13,6 @@
 		1AB30A8F2BC63B7C00AC7215 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB30A8E2BC63B7C00AC7215 /* Preview Assets.xcassets */; };
 		1AB30A912BC63B7C00AC7215 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30A902BC63B7C00AC7215 /* Persistence.swift */; };
 		1AB30A942BC63B7C00AC7215 /* WatchTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30A922BC63B7C00AC7215 /* WatchTV.xcdatamodeld */; };
-		1AB30A9E2BC63B7C00AC7215 /* WatchTVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30A9D2BC63B7C00AC7215 /* WatchTVTests.swift */; };
 		1AB30ABB2BC63EA400AC7215 /* UIFont+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30ABA2BC63EA400AC7215 /* UIFont+Helper.swift */; };
 		1AB30ABD2BC63ED400AC7215 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30ABC2BC63ED400AC7215 /* ImageHelper.swift */; };
 		1AB30AC22BC63F6100AC7215 /* TodayTrendingMOHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30AC12BC63F6100AC7215 /* TodayTrendingMOHandler.swift */; };
@@ -44,6 +43,14 @@
 		1AB30B082BC8310A00AC7215 /* TodayTrendingPageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B072BC8310A00AC7215 /* TodayTrendingPageUITests.swift */; };
 		1AB30B0A2BC8388D00AC7215 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B092BC8388D00AC7215 /* Toast.swift */; };
 		1AB30B0C2BC8407B00AC7215 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B0B2BC8407B00AC7215 /* UIColor+Hex.swift */; };
+		1AB30B0E2BC8E42200AC7215 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B0D2BC8E42200AC7215 /* NetworkManagerTests.swift */; };
+		1AB30B102BC8E48800AC7215 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B0F2BC8E48800AC7215 /* MockURLSession.swift */; };
+		1AB30B122BC8E4A000AC7215 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B112BC8E4A000AC7215 /* MockURLSessionDataTask.swift */; };
+		1AB30B152BC8E76F00AC7215 /* today_trending_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AB30B142BC8E76F00AC7215 /* today_trending_data.json */; };
+		1AB30B172BC8E8C800AC7215 /* JSONHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB30B162BC8E8C800AC7215 /* JSONHelpers.swift */; };
+		1AB30B182BC8F1AC00AC7215 /* today_trending_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AB30B142BC8E76F00AC7215 /* today_trending_data.json */; };
+		1AB30B1B2BC8FD5500AC7215 /* search_movies_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AB30B192BC8FD5500AC7215 /* search_movies_data.json */; };
+		1AB30B1C2BC8FD5500AC7215 /* movie_detail_978592.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AB30B1A2BC8FD5500AC7215 /* movie_detail_978592.json */; };
 		3916C1C76AFAFD4EAC4C93B0 /* Pods_WatchTV_WatchTVUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5E429B285479663D85C29D /* Pods_WatchTV_WatchTVUITests.framework */; };
 		809CBE9D787D2D8FBFB678B9 /* Pods_WatchTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7AAE6B960F505902A98382 /* Pods_WatchTV.framework */; };
 		CA4D24CBF6170CDE4756B2A6 /* Pods_WatchTVTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128834C6C6D624C949B99CE1 /* Pods_WatchTVTests.framework */; };
@@ -77,7 +84,6 @@
 		1AB30A902BC63B7C00AC7215 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		1AB30A932BC63B7C00AC7215 /* WatchTV.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WatchTV.xcdatamodel; sourceTree = "<group>"; };
 		1AB30A992BC63B7C00AC7215 /* WatchTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1AB30A9D2BC63B7C00AC7215 /* WatchTVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTVTests.swift; sourceTree = "<group>"; };
 		1AB30AA32BC63B7C00AC7215 /* WatchTVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchTVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB30ABA2BC63EA400AC7215 /* UIFont+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Helper.swift"; sourceTree = "<group>"; };
 		1AB30ABC2BC63ED400AC7215 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
@@ -110,6 +116,13 @@
 		1AB30B072BC8310A00AC7215 /* TodayTrendingPageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTrendingPageUITests.swift; sourceTree = "<group>"; };
 		1AB30B092BC8388D00AC7215 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		1AB30B0B2BC8407B00AC7215 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		1AB30B0D2BC8E42200AC7215 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		1AB30B0F2BC8E48800AC7215 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		1AB30B112BC8E4A000AC7215 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		1AB30B142BC8E76F00AC7215 /* today_trending_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = today_trending_data.json; sourceTree = "<group>"; };
+		1AB30B162BC8E8C800AC7215 /* JSONHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHelpers.swift; sourceTree = "<group>"; };
+		1AB30B192BC8FD5500AC7215 /* search_movies_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = search_movies_data.json; sourceTree = "<group>"; };
+		1AB30B1A2BC8FD5500AC7215 /* movie_detail_978592.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movie_detail_978592.json; sourceTree = "<group>"; };
 		3D114A2728FB3EF6ABF70C3A /* Pods-WatchTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchTV.release.xcconfig"; path = "Target Support Files/Pods-WatchTV/Pods-WatchTV.release.xcconfig"; sourceTree = "<group>"; };
 		5C5E429B285479663D85C29D /* Pods_WatchTV_WatchTVUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchTV_WatchTVUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9683BBD3179D1A34E42EB861 /* Pods-WatchTVTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchTVTests.debug.xcconfig"; path = "Target Support Files/Pods-WatchTVTests/Pods-WatchTVTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,8 +208,9 @@
 		1AB30A9C2BC63B7C00AC7215 /* WatchTVTests */ = {
 			isa = PBXGroup;
 			children = (
+				1AB30B132BC8E6A900AC7215 /* MockData */,
 				1AB30AFE2BC6A0E200AC7215 /* Mock */,
-				1AB30A9D2BC63B7C00AC7215 /* WatchTVTests.swift */,
+				1AB30B0D2BC8E42200AC7215 /* NetworkManagerTests.swift */,
 			);
 			path = WatchTVTests;
 			sourceTree = "<group>";
@@ -384,6 +398,8 @@
 			isa = PBXGroup;
 			children = (
 				1AB30AFF2BC6A0F600AC7215 /* MockNetworkPathMonitor.swift */,
+				1AB30B0F2BC8E48800AC7215 /* MockURLSession.swift */,
+				1AB30B112BC8E4A000AC7215 /* MockURLSessionDataTask.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -394,6 +410,17 @@
 				1AB30B022BC6ABF000AC7215 /* MovieDetailViewControllerProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		1AB30B132BC8E6A900AC7215 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				1AB30B1A2BC8FD5500AC7215 /* movie_detail_978592.json */,
+				1AB30B192BC8FD5500AC7215 /* search_movies_data.json */,
+				1AB30B142BC8E76F00AC7215 /* today_trending_data.json */,
+				1AB30B162BC8E8C800AC7215 /* JSONHelpers.swift */,
+			);
+			path = MockData;
 			sourceTree = "<group>";
 		};
 		460F4259837CABB7C764F59E /* Frameworks */ = {
@@ -531,6 +558,7 @@
 			files = (
 				1AB30A8F2BC63B7C00AC7215 /* Preview Assets.xcassets in Resources */,
 				1AB30A8C2BC63B7C00AC7215 /* Assets.xcassets in Resources */,
+				1AB30B182BC8F1AC00AC7215 /* today_trending_data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +566,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AB30B1B2BC8FD5500AC7215 /* search_movies_data.json in Resources */,
+				1AB30B1C2BC8FD5500AC7215 /* movie_detail_978592.json in Resources */,
+				1AB30B152BC8E76F00AC7215 /* today_trending_data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,8 +728,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AB30B172BC8E8C800AC7215 /* JSONHelpers.swift in Sources */,
+				1AB30B102BC8E48800AC7215 /* MockURLSession.swift in Sources */,
+				1AB30B122BC8E4A000AC7215 /* MockURLSessionDataTask.swift in Sources */,
+				1AB30B0E2BC8E42200AC7215 /* NetworkManagerTests.swift in Sources */,
 				1AB30B002BC6A0F600AC7215 /* MockNetworkPathMonitor.swift in Sources */,
-				1AB30A9E2BC63B7C00AC7215 /* WatchTVTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

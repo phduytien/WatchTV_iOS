@@ -9,16 +9,20 @@ import Foundation
 
 class NetworkManager {
     
-    private let session: URLSession
+    private let urlSession: URLSession
     private let apiPathV3 = "https://api.themoviedb.org/3"
     private let apiKey = "47aa75b56464da7a186b813a50035cd4"
     
-    init() {
-        let config = URLSessionConfiguration.default
-        config.requestCachePolicy = .reloadIgnoringLocalCacheData
-        config.urlCache = nil
-        
-        session = URLSession.init(configuration: config)
+    init(session: URLSession? = nil) {
+        if let session = session {
+            urlSession = session
+        } else {
+            let config = URLSessionConfiguration.default
+            config.requestCachePolicy = .reloadIgnoringLocalCacheData
+            config.urlCache = nil
+            let session = URLSession.init(configuration: config)
+            urlSession = session
+        }
     }
     
     func fetchTodayTrending(page: Int, success: @escaping (TodayTrendingResponseModel?) -> Void, failure: @escaping (String?) -> Void) {
@@ -26,7 +30,7 @@ class NetworkManager {
             failure("API url has wrong format")
             return
         }
-        let task = session.dataTask(with: url) { (data, response, error) in
+        let task = urlSession.dataTask(with: url) { (data, response, error) in
             if let err = error {
                 print("Fetch Today Trending Failed. Error: \(err)")
                 failure(err.localizedDescription)
@@ -57,7 +61,7 @@ class NetworkManager {
             failure("API url has wrong format")
             return
         }
-        let task = session.dataTask(with: url) { (data, response, error) in
+        let task = urlSession.dataTask(with: url) { (data, response, error) in
             if let err = error {
                 print("Search Movies Failed. Error: \(err)")
                 failure(err.localizedDescription)
@@ -88,7 +92,7 @@ class NetworkManager {
             failure("API url has wrong format")
             return
         }
-        let task = session.dataTask(with: url) { (data, response, error) in
+        let task = urlSession.dataTask(with: url) { (data, response, error) in
             if let err = error {
                 print("Fetch Movie Id: \(id) Detail Failed. Error: \(err)")
                 failure(err.localizedDescription)
