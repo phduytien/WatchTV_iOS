@@ -8,7 +8,10 @@
 - Networking: URLSession
 - CoreData for cache mechanism
 - Architecture: MVVM
-<img src="/Screenshots/MVVM_Folder_Structure.png" width="250"/>*Folder structure for MVVM*
+  
+<img src="/Screenshots/MVVM_Folder_Structure.png" width="250"/>
+*Folder structure for MVVM*
+
 - Pagination
 - ViewModels and ViewData for storing UI state
 - Protocols
@@ -40,7 +43,9 @@
 - [x] Create a simple UI Test.
 - [x] Make search work offline by searching cached results.
 - [x] Error message handling (offline/online/failed API calls).
-<img src="/Screenshots/OfflineMode.png" width="250"/>*Offline Mode*
+
+<img src="/Screenshots/OfflineMode.png" width="250"/>
+*Offline Mode*
 
 ## Screenshots
 |Today Trending|Search Movies|Movie Detail|
