@@ -14,8 +14,8 @@ class MovieInfoView: UIView {
     init(frame: CGRect, item: MovieItemModel) {
         self.item = item
         super.init(frame: frame)
-        self.movieImage.isHidden = false
-        self.movieColumnDetail.isHidden = false
+        movieImage.isHidden = false
+        movieColumnDetail.isHidden = false
     }
     
     required init?(coder: NSCoder) {
@@ -26,13 +26,13 @@ class MovieInfoView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.addSubview(imageView)
-        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+        addSubview(imageView)
+        imageView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+        imageView.leadingAnchor.constraint(equalTo:leadingAnchor, constant: 0).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 140).isActive = true
-
+        
         imageView.backgroundColor = .clear
         imageView.clipsToBounds = true
         
@@ -45,10 +45,10 @@ class MovieInfoView: UIView {
         columnView.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(columnView)
-        columnView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        columnView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        columnView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        columnView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
         columnView.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 20).isActive = true
-        columnView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        columnView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
         return columnView
     }()
 }

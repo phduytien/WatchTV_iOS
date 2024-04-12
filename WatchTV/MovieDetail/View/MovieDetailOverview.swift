@@ -14,9 +14,9 @@ class MovieDetailOverview: UIView {
     init(frame: CGRect, movieModel: MovieDetailModel?) {
         self.movieModel = movieModel
         super.init(frame: frame)
-        self.backgroundColor = .clear
-        self.overviewTitle.isHidden = false
-        self.overviewText.isHidden = false
+        backgroundColor = .clear
+        overviewTitle.isHidden = false
+        overviewText.isHidden = false
     }
     
     required init?(coder: NSCoder) {
@@ -32,11 +32,11 @@ class MovieDetailOverview: UIView {
         titleView.textColor = .lightGray
         titleView.font = .boldSystemFont(ofSize: 22)
         
-        self.addSubview(titleView)
-        titleView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        addSubview(titleView)
+        titleView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
         titleView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        titleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        titleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
         return titleView
     }()
     
@@ -48,11 +48,11 @@ class MovieDetailOverview: UIView {
         textView.textColor = .gray
         textView.font = .systemFont(ofSize: 16)
         
-        self.addSubview(textView)
+        addSubview(textView)
         textView.topAnchor.constraint(equalTo: overviewTitle.bottomAnchor, constant: 0).isActive = true
-        textView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        textView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        textView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        textView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
         return textView
     }()
 }

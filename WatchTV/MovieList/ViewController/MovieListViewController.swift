@@ -14,7 +14,7 @@ class MovieListViewController: UIViewController {
     
     var viewModel: MovieListViewModelProtocol
     
-    public init(_ managedObjectContext: NSManagedObjectContext) {
+    init(_ managedObjectContext: NSManagedObjectContext) {
         viewModel = MovieListViewModel()
         super.init(nibName: nil, bundle: nil)
     }
@@ -26,7 +26,9 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
-        self.viewModel.loadViewInitialData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
+            self?.viewModel.loadViewInitialData()
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +77,7 @@ class MovieListViewController: UIViewController {
     }()
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: self.view.frame, style: .plain)
+        let tableView = UITableView(frame: view.frame, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -83,11 +85,11 @@ class MovieListViewController: UIViewController {
         tableView.separatorStyle = .singleLine
         tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
-        self.homeTabView.addSubview(tableView)
-        tableView.topAnchor.constraint(equalTo: self.homeTabView.topAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: self.homeTabView.leadingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: self.homeTabView.bottomAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: self.homeTabView.trailingAnchor).isActive = true
+        homeTabView.addSubview(tableView)
+        tableView.topAnchor.constraint(equalTo: homeTabView.topAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: homeTabView.leadingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: homeTabView.bottomAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: homeTabView.trailingAnchor).isActive = true
         
         return tableView
     }()

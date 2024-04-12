@@ -32,6 +32,10 @@ class MovieDetailViewModel {
                 let connected = status == .satisfied
                 if connected != self?.isConnected {
                     self?.isConnected = connected
+                    self?.viewController?.showMessage(
+                        status == .satisfied ? "Internet Connected!" : "No Internet Connection. Offline Mode",
+                        type: status == .satisfied ? MessageType.success : MessageType.warning
+                    )
                 }
             }
         }
@@ -39,7 +43,7 @@ class MovieDetailViewModel {
     }
     
     deinit {
-        self.networkMonitor.cancel();
+        networkMonitor.cancel();
     }
     
     func fetchMovieDetail() {
@@ -49,6 +53,12 @@ class MovieDetailViewModel {
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self, let response = response else { return }
                     self.handleMovieDetail(detail: response)
+                }
+            } failure: { error in
+                DispatchQueue.main.async { [weak self] in
+                    let err = error ?? "Something Went Wrong"
+                    guard let self = self else { return }
+                    self.viewController?.showMessage(err, type: MessageType.alert)
                 }
             }
         } else if let result = MovieDetailMOHandler.fetchMovieDetail(id, moc: managedObjectContext) {

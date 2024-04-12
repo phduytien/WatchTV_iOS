@@ -14,8 +14,8 @@ class MovieDetailTopView: UIView {
     init(frame: CGRect, movieModel: MovieDetailModel?) {
         self.movieModel = movieModel
         super.init(frame: frame)
-        self.movieImage.isHidden = false
-        self.movieColumnDetails.isHidden = false
+        movieImage.isHidden = false
+        movieColumnDetails.isHidden = false
     }
     
     required init?(coder: NSCoder) {
@@ -26,11 +26,11 @@ class MovieDetailTopView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.addSubview(imageView)
-        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: self.centerXAnchor, constant: -10).isActive = true
+        addSubview(imageView)
+        imageView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -10).isActive = true
         
         imageView.backgroundColor = .clear
         imageView.clipsToBounds = true
@@ -43,11 +43,11 @@ class MovieDetailTopView: UIView {
         let columnView = MovieDetailColumnView(frame: .zero, movieModel: movieModel)
         columnView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.addSubview(columnView)
-        columnView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        columnView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-        columnView.leadingAnchor.constraint(equalTo: self.centerXAnchor, constant: 10).isActive = true
-        columnView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        addSubview(columnView)
+        columnView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        columnView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+        columnView.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 10).isActive = true
+        columnView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
         return columnView
     }()
 }

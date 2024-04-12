@@ -14,7 +14,7 @@ class MovieInfoColumnView: UIView {
     init(frame: CGRect, item: MovieItemModel) {
         self.item = item
         super.init(frame: frame)
-        self.backgroundColor = .clear
+        backgroundColor = .clear
         addViewsToStackView()
     }
     
@@ -28,11 +28,11 @@ class MovieInfoColumnView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .equalCentering
         
-        self.addSubview(stackView)
-        stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        addSubview(stackView)
+        stackView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
         return stackView
     }()
     

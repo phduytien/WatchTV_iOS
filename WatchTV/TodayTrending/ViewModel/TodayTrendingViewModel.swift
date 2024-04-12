@@ -22,7 +22,7 @@ class TodayTrendingViewDataModel {
 }
 
 // MARK:- ViewModel
-public class TodayTrendingViewModel {
+class TodayTrendingViewModel {
     
     weak var viewController: MovieListViewControllerProtocol?
     
@@ -42,7 +42,7 @@ public class TodayTrendingViewModel {
                 if connected != self?.isConnected {
                     self?.isConnected = connected
                     self?.viewController?.showMessage(
-                        status == .satisfied ? "Internet Connected!" : "No Internet Connection",
+                        status == .satisfied ? "Internet Connected!" : "No Internet Connection. Offline Mode",
                         type: status == .satisfied ? MessageType.success : MessageType.warning
                     )
                 }
@@ -61,7 +61,7 @@ public class TodayTrendingViewModel {
     }
     
     deinit {
-        self.networkMonitor.cancel();
+        networkMonitor.cancel();
     }
     
     func updateView() {
@@ -84,6 +84,12 @@ public class TodayTrendingViewModel {
                     }
                     self.handleTodayTrendingResult(todayTrendingModel: response)
                 }
+            } failure: { error in
+                DispatchQueue.main.async { [weak self] in
+                    let err = error ?? "Something Went Wrong"
+                    guard let self = self else { return }
+                    self.viewController?.showMessage(err, type: MessageType.alert)
+                }
             }
         } else {
             print("Fetch today trending on local")
@@ -97,6 +103,12 @@ public class TodayTrendingViewModel {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self, let response = response else { return }
                 self.handleTodayTrendingResult(todayTrendingModel: response)
+            }
+        } failure: { error in
+            DispatchQueue.main.async { [weak self] in
+                let err = error ?? "Something Went Wrong"
+                guard let self = self else { return }
+                self.viewController?.showMessage(err, type: MessageType.alert)
             }
         }
     }
@@ -141,7 +153,7 @@ public class TodayTrendingViewModel {
         }
         if isConnected {
             print("Fetch search movie with keyword: \(keyword) on network")
-            networkManager.searchMovies(keyword: keyword, page: 1, completionHandler: { response in
+            networkManager.searchMovies(keyword: keyword, page: 1, success: { response in
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
                     guard let response = response else {
@@ -149,6 +161,12 @@ public class TodayTrendingViewModel {
                         return
                     }
                     self.handleSearchMoviesResult(response, keyword: keyword, isNew: true)
+                }
+            }, failure: { error in
+                DispatchQueue.main.async { [weak self] in
+                    let err = error ?? "Something Went Wrong"
+                    guard let self = self else { return }
+                    self.viewController?.showMessage(err, type: MessageType.alert)
                 }
             })
         } else {
@@ -166,6 +184,12 @@ public class TodayTrendingViewModel {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self, let response = response else { return }
                 self.handleSearchMoviesResult(response, keyword: keyword, isNew: false)
+            }
+        } failure: { error in
+            DispatchQueue.main.async { [weak self] in
+                let err = error ?? "Something Went Wrong"
+                guard let self = self else { return }
+                self.viewController?.showMessage(err, type: MessageType.alert)
             }
         }
     }

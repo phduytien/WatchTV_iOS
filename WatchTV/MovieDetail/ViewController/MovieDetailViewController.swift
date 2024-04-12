@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class MovieDetailViewController: UIViewController, MovieDetailViewControllerProtocol {
+class MovieDetailViewController: UIViewController {
     
     private var viewModel: MovieDetailViewModel
     private var movieTitle: String
@@ -28,7 +28,9 @@ class MovieDetailViewController: UIViewController, MovieDetailViewControllerProt
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.fetchMovieDetail()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
+            self?.viewModel.fetchMovieDetail()
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,10 +49,6 @@ class MovieDetailViewController: UIViewController, MovieDetailViewControllerProt
         view.backgroundColor = .white
     }
     
-    func updateView() {
-        movieTopView.isHidden = false
-        movieOverview.isHidden = false
-    }
     
     private lazy var movieTopView: MovieDetailTopView = {
         let topView = MovieDetailTopView(frame: .zero, movieModel: viewModel.movieDetailModel())
@@ -74,4 +72,17 @@ class MovieDetailViewController: UIViewController, MovieDetailViewControllerProt
         overview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         return overview
     }()
+}
+
+// MARK:- MovieDetailViewControllerProtocol
+extension MovieDetailViewController: MovieDetailViewControllerProtocol {
+    func showMessage(_ message: String, type: MessageType) {
+        Toast.showToast( message: message, type: type)
+    }
+    
+    func updateView() {
+        movieTopView.isHidden = false
+        movieOverview.isHidden = false
+    }
+    
 }
