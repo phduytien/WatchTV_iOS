@@ -34,6 +34,7 @@ struct Toast {
         toastLabel.textAlignment = .center;
         toastLabel.text = message
         toastLabel.alpha = 0.0
+        toastLabel.numberOfLines = 2
         toastLabel.layer.cornerRadius = 10;
         toastLabel.clipsToBounds  =  true
         

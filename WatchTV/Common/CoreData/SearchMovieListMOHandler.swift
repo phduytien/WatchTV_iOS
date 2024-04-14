@@ -14,6 +14,7 @@ class SearchMovieListMOHandler {
     
     
     static func saveCurrentSearchMovies(_ key: String, movies: [MovieItemModel], moc: NSManagedObjectContext) {
+        // Check if keyword is exists, then remove and update it
         if SearchMovieListMOHandler.checkKeywordIsExist(key, moc: moc) {
             SearchMovieListMOHandler.removeSearchMovies(key, moc: moc)
         }

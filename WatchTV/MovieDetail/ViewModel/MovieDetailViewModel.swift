@@ -47,6 +47,7 @@ class MovieDetailViewModel {
     }
     
     func fetchMovieDetail() {
+        // In case internet connected
         if isConnected {
             print("Fetch movie detail on network")
             networkManager.fetchMovieDetail(id: id) { response in
@@ -61,15 +62,27 @@ class MovieDetailViewModel {
                     self.viewController?.showMessage(err, type: MessageType.alert)
                 }
             }
-        } else if let result = MovieDetailMOHandler.fetchMovieDetail(id, moc: managedObjectContext) {
-            print("Fetch movie detail on local")
-            handleMovieDetailMO(detail: result)
+        }
+        // Else internet not connected
+        else {
+            // Fetch movie detail on local database
+            if let result = MovieDetailMOHandler.fetchMovieDetail(id, moc: managedObjectContext) {
+                print("Fetch movie detail on local")
+                handleMovieDetailMO(detail: result)
+            } else {
+                print("Movie detail isn't existed")
+                viewController?.showMessage(
+                    "Couldn't get movie. Please try later!",
+                    type: MessageType.alert
+                )
+            }
         }
     }
     
     func handleMovieDetail(detail: MovieDetailModel) {
         self.detail = detail
         viewController?.updateView()
+        // Save/update movie detail on local database
         MovieDetailMOHandler.addMovieDetail(detail, moc: managedObjectContext)
     }
     

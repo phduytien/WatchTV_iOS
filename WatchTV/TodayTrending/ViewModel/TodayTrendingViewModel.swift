@@ -93,7 +93,16 @@ class TodayTrendingViewModel {
             }
         } else {
             print("Fetch today trending on local")
-            handleTodayTrendingMO(movies: TodayTrendingMOHandler.fetchTodayTrendingMovies(in: managedObjectContext))
+            let movies = TodayTrendingMOHandler.fetchTodayTrendingMovies(in: managedObjectContext)
+            // If list today trending movies is exists
+            if movies.count > 0 {
+                handleTodayTrendingMO(movies: movies)
+            } else {
+                viewController?.showMessage(
+                    "Couldn't get list trending movies. Please try later!",
+                    type: MessageType.alert
+                )
+            }
         }
     }
     
@@ -117,6 +126,7 @@ class TodayTrendingViewModel {
         handleTodayTrendingPagination(todayTrendingModel: todayTrendingModel)
         appendMovies(todayTrendingModel.results)
         updateView()
+        // Save/update list today trending movies
         TodayTrendingMOHandler.saveTodayTrendingMovies(dataModel.movieList, moc: managedObjectContext)
     }
     
@@ -175,7 +185,15 @@ class TodayTrendingViewModel {
             })
         } else {
             print("Fetch search movie with keyword: \(keyword) on local")
-            handleSearchMoviesMO(SearchMovieListMOHandler.fetchSearchMovies(keyword, moc: managedObjectContext))
+            let movies = SearchMovieListMOHandler.fetchSearchMovies(keyword, moc: managedObjectContext)
+            if (movies.count > 0) {
+                handleSearchMoviesMO(movies)
+            } else {
+                viewController?.showMessage(
+                    "Couldn't search movies. Please try later!",
+                    type: MessageType.alert
+                )
+            }
         }
     }
     
